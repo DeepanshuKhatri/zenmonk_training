@@ -1,0 +1,47 @@
+.listing{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card{
+    margin-left: 10px;
+    height:200px;
+    width:400px;
+    background-color: #F5EFE7;
+}
+.input{
+    margin-bottom: 10px;
+}
+.options{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.desc{
+    height:100px;
+    width:600px;
+    /* background-color:black */
+}
+.edit-outlined{
+    margin-right: 5px;;
+}
+.plus{
+    margin-top: 5px;;
+    height: 50px;
+    width:150px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    overflow: hidden;
+    cursor: pointer;
+}
