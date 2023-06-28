@@ -12,8 +12,9 @@ import { auth, db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 
-const Message = () => {
+const Message = (props) => {
   const [user] = useAuthState(auth)
+  console.log(props);
 
   const [messages, setMessages] = useState([]);
   
@@ -29,10 +30,17 @@ const Message = () => {
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
-      setMessages(messages);
+      const {uid} = auth.currentUser;
+      setMessages(messages.filter(x=> x.uid===`${uid}-${props.receiver}`|| x.uid===`${props.receiver}-${uid}`));
+      
     });
+
+    // messages = messages.filter(x=> x.uid===`${uid}-${props.receiver}`|| x.uid===`${props.receiver}-${uid}`)
+    // setMessages((messages)=>{
+    //   messages.filter(x=> x.uid===`${uid}-${props.receiver}`|| x.uid===`${props.receiver}-${uid}`)
+    // });
     return () => unsubscribe;
-  }, []);
+  }, [props.receiver]);
 
   return (
     <div className="message-chats">
@@ -55,7 +63,7 @@ const Message = () => {
 
 
       <div className="message-input">
-        <SendMessage/>
+        <SendMessage receiver={props.receiver}/>
 
       
       </div>

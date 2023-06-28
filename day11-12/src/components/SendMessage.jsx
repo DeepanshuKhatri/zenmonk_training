@@ -6,7 +6,7 @@ import {SmileOutlined, SendOutlined} from '@ant-design/icons'
 import { Avatar, Input } from "antd";
 
 
-const SendMessage = () => {
+const SendMessage = (props) => {
     const [message, setMessage] = useState("");
     const sendMessage = async (event) => {
         event.preventDefault();
@@ -21,7 +21,7 @@ const SendMessage = () => {
           name: displayName,
           avatar: photoURL,
           createdAt: serverTimestamp(),
-          uid,
+          uid:`${uid}-${props.receiver}`,
         });
         setMessage("");
       };

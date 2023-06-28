@@ -33,7 +33,8 @@ export default () => {
       await addDoc(collection(db,"users"), {
         name: res1.displayName,
         email: res1.email,
-        uid: res1.uid
+        uid: res1.uid,
+        avatar: res1.photoURL
       })
     }
     });
